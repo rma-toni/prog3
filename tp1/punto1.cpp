@@ -1,10 +1,13 @@
 #include <iostream>
 #include <cmath>
+#include <chrono>
+#include <vector>
 
 using namespace std;
 
 int main(){
-    int primos[5];
+
+    std::vector<int> primos;
     int counter = 0;
     int i, n;
     bool esPrimo;
@@ -20,8 +23,9 @@ int main(){
         }
     }
 
+    auto inicio = chrono::high_resolution_clock::now();
     int k = n;
-    while (counter<5)
+    while (k>1)
     {
         esPrimo = true;
         i = 2;
@@ -36,17 +40,14 @@ int main(){
         }
         if (esPrimo)
         {
-            primos[counter] = k;
-            counter++;
+            primos.push_back(k);
         }
-        
         k--;
     }
-
-    for (int num : primos)
-    {
-        cout << num << endl;
+    for (int i = 0; i < 5; ++i) {
+        cout << primos[i] << endl;
     }
-    
-    
+    auto fin = chrono::high_resolution_clock::now();
+    chrono::duration<double, std::milli> tiempo = fin - inicio;
+    cout << "El proceso tardo: " << tiempo.count() << " ms" << endl;
 }
