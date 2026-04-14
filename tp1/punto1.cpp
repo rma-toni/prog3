@@ -23,7 +23,9 @@ int main(){
         }
     }
 
+    clock_t cpu_inicio = clock();
     auto inicio = chrono::high_resolution_clock::now();
+    
     int k = n;
     while (k>1)
     {
@@ -47,7 +49,16 @@ int main(){
     for (int i = 0; i < 5; ++i) {
         cout << primos[i] << endl;
     }
+    
+    clock_t cpu_fin = clock();
     auto fin = chrono::high_resolution_clock::now();
-    chrono::duration<double, std::milli> tiempo = fin - inicio;
-    cout << "El proceso tardo: " << tiempo.count() << " ms" << endl;
+    
+    double cpu_usada = double(cpu_fin - cpu_inicio) / CLOCKS_PER_SEC;
+    chrono::duration<double, milli> tiempo_transcurrido = fin - inicio;
+    
+    double porcentaje = (cpu_usada / tiempo_transcurrido.count()) * 100.0;
+
+    cout << "Resultados del analisis:" << endl;
+    cout << "El proceso tardo: " << tiempo_transcurrido.count() << " ms" << endl;
+    cout << "Uso de CPU: " << porcentaje << "%" << endl;
 }
