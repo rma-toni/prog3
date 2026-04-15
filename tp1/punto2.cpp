@@ -6,21 +6,10 @@
 using namespace std;
 
 int main(){
-    int n;
-
-    cout << "Ingrese un numero n mayor a 10^5: ";
-
-    while (true)
-    {
-        if (cin >> n && n >= 1e5) break;
-        else{
-            cout << "Entrada invalida. Ingrese un numero n mayor o igual a 10^5: ";
-            cin.clear(); // Limpia el estado de error de cin
-            cin.ignore(10000, '\n'); // Ignora los caracteres basura en el buffer hasta el próximo enter
-        }
-    }
-
+    
     auto inicio = chrono::high_resolution_clock::now();
+    
+    int n = 1000000;
 
     vector<int> numeros;
     int counter = 0;
