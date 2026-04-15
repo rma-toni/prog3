@@ -5,11 +5,17 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
     
     auto inicio = chrono::high_resolution_clock::now();
     
-    int n = 1000000;
+    if (argc < 3) {
+        std::cerr << "Error: Debes ingresar el valor de n y x." << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <numero>" << std::endl;
+        return 1;
+    }
+
+    int n = std::stoi(argv[1]);
 
     vector<int> numeros;
     int counter = 0;
@@ -22,7 +28,7 @@ int main(){
         numeros.push_back(distr(gen));
     }
 
-    int x = 5; // entrada por usuario? (cin)
+    int x = std::stoi(argv[2]);
     for (int num : numeros)
     {
         if (num == x)

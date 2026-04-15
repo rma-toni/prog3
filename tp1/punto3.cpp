@@ -5,10 +5,17 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
     auto inicio = chrono::high_resolution_clock::now();
 
-    int n = 5; // no pido valores por teclado ya que el objetivo es medir el tiempo
+    if (argc < 2) {
+        std::cerr << "Error: Debes ingresar el valor de n." << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <numero>" << std::endl;
+        return 1;
+    }
+
+
+    int n = std::stoi(argv[1]); // no pido valores por teclado ya que el objetivo es medir el tiempo
 
     random_device rd;
     mt19937 gen(rd());

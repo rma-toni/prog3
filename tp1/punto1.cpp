@@ -5,15 +5,22 @@
 
 using namespace std;
 
-int main(){
+int main(int argc, char* argv[]){
+    
+    auto inicio = chrono::high_resolution_clock::now();
+    
+    if (argc < 2) {
+        std::cerr << "Error: Debes ingresar el valor de n." << std::endl;
+        std::cerr << "Uso: " << argv[0] << " <numero>" << std::endl;
+        return 1;
+    }
 
+    int n = std::stoi(argv[1]);
     std::vector<int> primos;
     int counter = 0;
     int i;
-    int n = 100000;
     bool esPrimo;
 
-    auto inicio = chrono::high_resolution_clock::now();
     
     int k = n;
     while (k>1)
