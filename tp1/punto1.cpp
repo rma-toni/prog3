@@ -22,12 +22,12 @@ int main(int argc, char* argv[]){
     bool esPrimo;
 
     
-    int k = n;
-    while (k>1)
+    int k = 2;
+    while (k<=n)
     {
         esPrimo = true;
         i = 2;
-        while (i <= sqrt(k))
+        while (i*i <= k)
         {
             if (k % i == 0)
             {
@@ -40,9 +40,9 @@ int main(int argc, char* argv[]){
         {
             primos.push_back(k);
         }
-        k--;
+        k++;
     }
-    for (int i = 0; i < 5; ++i) {
+    for (int i = primos.size()-5; i < primos.size(); ++i) {
         cout << primos[i] << endl;
     }
     
