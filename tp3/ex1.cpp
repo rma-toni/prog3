@@ -15,7 +15,6 @@ int main(int argc, char* argv[]){
 
     int n = std::stoi(argv[1]);
     vector<int> primos;
-    int counter = 0;
 
     #pragma omp parallel for
     for (int k = 2; k <= n; k++) {
